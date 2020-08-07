@@ -8,14 +8,43 @@ puts 'Enter your Name (Second Player): '
 player_two = gets.chomp
 # save the player_one name in this var
 puts "#{player_two} your symbol is O "
-turn = 1
-while turn <= 9
-  puts '-------------'
-  puts '| a | b | c |'
-  puts '| d | e | f |'
-  puts '| g | h | i |'
-  puts '-------------'
+
+board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+
+def display_board
+  puts ["#{board[0]} " '|' "#{board[1]} " '|' "#{board[2]} "]
+  puts '---------------'
+  puts ["#{board[3]} " '|' "#{board[4]} " '|' "#{board[5]} "]
+  puts '---------------'
+  puts ["#{board[6]} " '|' "#{board[7]} " '|' "#{board[8]} "]
+  puts '---------------'
 end
+
+display_board(board)
+
+def input(_index)
+  input.to_i - 1
+end
+
+def move(board, index, player)
+  board[index] = player
+end
+
+def position_taken?(board, index)
+  if (board[index] == ' ') || (board[index] == '') || board[index].nil?
+    false
+  else
+    true
+  end
+end
+
+def valid_move?(board, index)
+  if index.between?(0,8) && !position_taken?(board, index)
+     return true
+  end
+end
+
+
 
 puts "#{player_one} It is Your Turn, Select the position"
 # we will save the position and sign

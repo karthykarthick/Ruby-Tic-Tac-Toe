@@ -10,11 +10,11 @@ player_two = gets.chomp
 puts "#{player_two} your symbol is O "
 turn = 1
 while turn <= 9
-    puts '-------------'
-    puts '| a | b | c |'
-    puts '| d | e | f |'
-    puts '| g | h | i |'
-    puts '-------------'
+  puts '-------------'
+  puts '| a | b | c |'
+  puts '| d | e | f |'
+  puts '| g | h | i |'
+  puts '-------------'
 end
 
 puts "#{player_one} It is Your Turn, Select the position"
@@ -25,8 +25,6 @@ puts "#{player_two} It is Your Turn, select the position"
 # we will save the position and sign
 # we will update the board and display it
 # we will check the conditions
-
-valid_move = true
 
 puts 'player_one or player_two is winner! or it is draw'
 puts 'Do you want to play again (Y/N)?'

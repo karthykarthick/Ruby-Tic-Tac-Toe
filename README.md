@@ -9,7 +9,7 @@
 </div>
 <p align="center">The main goal is to implement the main concepts of Object-Oriented Programming</p>
 
-# Tic Tac Toe - Ruby
+# Tic Tac Toe - Ruby Output
 
 > The main goal is to implement the main concepts of Object-Oriented Programming
 

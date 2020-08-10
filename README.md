@@ -1,3 +1,14 @@
+<h3 align="center">Tic Tac Toe - Ruby</h3>
+
+<div align="center">
+
+[![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/umairarshadbutt/TicTacToe-Ruby)
+[![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)](https://github.com/umairarshadbutt/TicTacToe-Ruby/issues)
+[![GitHub2 Pull Requests](https://img.shields.io/badge/GitHub-Pull%20Requests-blue)](https://github.com/umairarshadbutt/TicTacToe-Ruby/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+</div>
+<p align="center">The main goal is to implement the main concepts of Object-Oriented Programming</p>
+
 # Tic Tac Toe - Ruby
 
 > The main goal is to implement the main concepts of Object-Oriented Programming

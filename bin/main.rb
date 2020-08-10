@@ -9,7 +9,7 @@ player_two = gets.chomp
 # save the player_one name in this var
 puts "#{player_two} your symbol is O "
 turn = 1
-while turn <= 9
+9.times do turn <= 9
   puts '-------------'
   puts '| a | b | c |'
   puts '| d | e | f |'

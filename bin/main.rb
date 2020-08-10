@@ -1,46 +1,26 @@
-puts 'welcome to Tic Tac Toe'
-puts 'Enter your Name (First Player): '
-player_one = gets.chomp
-# save the player_one name in this var
-puts "#{player_one} your symbol is X "
+puts "Welcome to TicTacToe\n\n"
+puts 'Who is the first player?'
+player1 = gets.chomp
+# save the name of the player 1
+puts "#{player1} your symbol is O \n\n"
+# assign a simbol to player 1
+puts 'Who is the second player?'
+player2 = gets.chomp
+# save the name of the player 2
+puts "#{player2} your symbol is X \n\n"
+# assign a simbol to player 2
 
-puts 'Enter your Name (Second Player): '
-player_two = gets.chomp
-# save the player_one name in this var
-puts "#{player_two} your symbol is O "
+9.times do
+  puts 'a | b | c'
+  puts 'd | e | f'
+  puts 'g | h | i'
 
-
-game_on = true
-
-
-
-while game_on
-    # initial instructions for player
-    puts "#{player_one} It is Your Turn, Select the position"
-
-    puts "#{player_two} It is Your Turn, select the position"
-
-    9.times do
-      puts '-------------'
-      puts '| a | b | c |'
-      puts '| d | e | f |'
-      puts '| g | h | i |'
-      puts '-------------'
-
-    end
-    
-    if winner # and/or draw (the exact condition in this milestone is not important)
-      game_on = false
-    end
+  puts "#{Player1} choose a position \n\n"
+  gets.chomp
+  # We override and display the board
+  # Verify win conditions
+  puts "#{Player2} choose a position \n\n"
+  gets.chomp
+  # We override and display the board
+  # Verify win conditions
 end
-
-
-
-# we will update the board and display it
-# we will check the conditions
-
-puts 'player_one or player_two is winner! or it is draw'
-puts 'Do you want to play again (Y/N)?'
-replay = gets.chomp
-puts replay
-# proceed depending on the user input either to terminate the game or rematch

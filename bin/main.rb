@@ -10,17 +10,24 @@ player2 = gets.chomp
 puts "#{player2} your symbol is X \n\n"
 # assign a simbol to player 2
 
-9.times do
+game_on = true
+
+# initial instructions for player
+
+while game_on
+  # loop for each move
   puts 'a | b | c'
   puts 'd | e | f'
   puts 'g | h | i'
 
-  puts "#{Player1} choose a position \n\n"
+  puts "Player1 choose a position \n\n"
   gets.chomp
   # We override and display the board
   # Verify win conditions
-  puts "#{Player2} choose a position \n\n"
+  puts "Player2 choose a position \n\n"
   gets.chomp
-  # We override and display the board
-  # Verify win conditions
+  game_on = false if winner # and/or draw (the exact condition in this milestone is not important)
 end
+
+# We override and display the board
+# Verify win conditions

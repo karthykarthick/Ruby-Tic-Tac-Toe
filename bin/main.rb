@@ -9,20 +9,33 @@ player_two = gets.chomp
 # save the player_one name in this var
 puts "#{player_two} your symbol is O "
 
-9.times do
-  puts '-------------'
-  puts '| a | b | c |'
-  puts '| d | e | f |'
-  puts '| g | h | i |'
-  puts '-------------'
+
+game_on = true
+
+
+
+while game_on
+    # initial instructions for player
+    puts "#{player_one} It is Your Turn, Select the position"
+
+    puts "#{player_two} It is Your Turn, select the position"
+
+    9.times do
+      puts '-------------'
+      puts '| a | b | c |'
+      puts '| d | e | f |'
+      puts '| g | h | i |'
+      puts '-------------'
+
+    end
+    
+    if winner # and/or draw (the exact condition in this milestone is not important)
+      game_on = false
+    end
 end
 
-puts "#{player_one} It is Your Turn, Select the position"
-# we will save the position and sign
-# we will update the board and display it
-# we will check the conditions
-puts "#{player_two} It is Your Turn, select the position"
-# we will save the position and sign
+
+
 # we will update the board and display it
 # we will check the conditions
 

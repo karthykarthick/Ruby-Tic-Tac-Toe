@@ -1,66 +1,88 @@
+require_relative '../lib/board'
 require_relative '../lib/players.rb'
-require_relative '../lib/game_logic.rb'
-def welcome_message(name, symbol)
-  puts "You are  welcome #{name}, Your symbol is #{symbol}"
+require 'colorize'
+require 'tty-font'
+require 'tty-prompt'
+
+font = TTY::Font.new(:standard)
+puts font.write('TicTacToe')
+
+puts 'Welcome To TicTacToe'.upcase.colorize(:cyan)
+puts
+puts 'To play the game, follow instructions below.'
+puts '---------------------------------------'
+puts '|------------INSTRUCTIONS----------------|'
+puts '1. Both players should enter their names.'
+puts '2. A TicToe board will presented to you with numbers 1 through 9.'
+puts "3. Enter numbers 1 through 9 that corresponds to the position on the board that you'd like to occupy."
+puts
+puts 'May the force be with you.'.upcase.colorize(:magenta)
+puts
+
+prompt = TTY::Prompt.new
+
+player1_name = prompt.ask("Player 1, What's your name?")
+player2_name = prompt.ask("Player 2, What's your name?")
+
+system('clear')
+
+turn = 0
+player = nil
+
+# Object Creation.
+player_one = Player.new(player1_name, 'X')
+player_two = Player.new(player2_name, 'O')
+game = GameBoard.new
+
+def prompt_input(current_player)
+  puts "#{current_player.player_name} make your move.".colorize(:green)
+  player_move = gets.strip.to_i
+  player_move
 end
 
-game = Gamelogic.new
-
-game.array = %w[a b c d e f g h i]
-def game_board(board_array = game.array)
-  puts '-------------'
-  puts "| #{board_array[0]} | #{board_array[1]} | #{board_array[2]} |"
-  puts '-------------'
-  puts "| #{board_array[3]} | #{board_array[4]} | #{board_array[5]} |"
-  puts '-------------'
-  puts "| #{board_array[6]} | #{board_array[7]} | #{board_array[8]} |"
-  puts '-------------'
-end
-puts 'Welcome to Tic Tac Toe'
-puts 'Please Enter Your Name(First Player): '
-player1 = Players.new(gets.chomp, 'X')
-welcome_message(player1.name, player1.symbol)
-puts 'Please Enter Your Name(Second Player): '
-player2 = Players.new(gets.chomp, 'O')
-welcome_message(player2.name, player2.symbol)
-
-players = [player1, player2]
-rematch = true
-while rematch == true
-  while game.winning? == false
-    players.each do |player|
-      loop do
-        game_board(game.array)
-        puts "It is your move #{player.name}, Select the position"
-        move = gets.chomp
-        validate_move = game.validate_move(move)
-        if validate_move != 'No Valid'
-          update_game_board = game.update_board(validate_move, player.symbol)
-          puts 'Succesfull'
-        else
-          puts 'invalid input'
-        end
-        break if update_game_board == true
-      end
-      break if game.winning?
+def invalid_move(game, move_made, player)
+  until game.valid_move?(game.board, move_made)
+    puts 'Invalid Move. Try again.'.upcase.colorize(:red)
+    puts game.display_board
+    repeat_move = prompt_input(player)
+    if game.valid_move?(game.board, repeat_move)
+      game.update_board(repeat_move, player.player_symbol)
+      break
     end
   end
+end
 
-  game_board(game.array)
-  if game.winning? && game.winning? != 'draw'
-    puts "player #{game.winner(player1, player2)} is the winner!"
+def switch_turn(turn, player1, player2)
+  current_player = if turn.even?
+                     player1
+                   else
+                     player2
+                   end
+  current_player
+end
+
+puts game.display_board
+while turn <= 8
+  player = switch_turn(turn, player_one, player_two)
+  move_made = prompt_input(player)
+  winner = nil
+
+  system('clear')
+
+  if game.valid_move?(game.board, move_made)
+    game.update_board(move_made, player.player_symbol)
+    winner = game.check_for_winner(player)
   else
-    puts 'The game is draw'
+    invalid_move(game, move_made, player)
   end
-  puts 'do you want to rematch(y/n)? '
+  puts game.display_board
 
-  rematch = gets.chomp
-  if rematch.casecmp('YES').zero?
-    rematch = true
-    game.array = %w[a b c d e f g h i]
-  else
-    rematch = false
-    puts 'Goodbye'
+  if winner
+    puts "#{winner.player_name} is the winner."
+    break
+  elsif game.board_filled?(game.board)
+    puts "It's a draw guys."
+    break
   end
-
+  turn += 1
 end

@@ -1,8 +1,7 @@
-class Players
-  attr_reader :name
-  attr_reader :symbol
+class Player
+  attr_reader :player_name, :player_symbol
   def initialize(name, symbol)
-    @name = name
-    @symbol = symbol
+    @player_name = name
+    @player_symbol = symbol
   end
 end

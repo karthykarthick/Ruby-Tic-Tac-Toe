@@ -90,7 +90,7 @@ To make any change,
 
 ## Authors
 
-👤 **Umair Arshad**
+👤 **Karthiick Harimoorthy**
 
 - Github: [@kathykarthick](https://github.com/karthykarthick)
 - Linkedin: [kathick-harimoorthy](https://www.linkedin.com/in/karthick-harimoorthy/)
